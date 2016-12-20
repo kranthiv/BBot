@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Web;
 using BBot.Models;
 using Microsoft.Bot.Builder.FormFlow;
+using BBot.QNA;
 
 namespace BBot.Dialogs
 {
@@ -38,6 +39,15 @@ namespace BBot.Dialogs
         public async Task Contact(IDialogContext context, LuisResult result)
         {
 
+        }
+
+        [LuisIntent("FAQS")]
+        public async Task FAQS(IDialogContext context, LuisResult result)
+        {
+            QNAService qNa = new QNAService();
+            QNAResponse reponse  = await qNa.GetAnswerAsync(result.Query);
+            await context.PostAsync(reponse.Answer);
+            context.Wait(this.MessageReceived);
         }
 
         [LuisIntent("suspend payments")]
