@@ -11,8 +11,8 @@ namespace BBot.QNA
 {
     public class QNAService
     {
-        private const string knowledgebaseId = @"fb94d233-4239-41e2-9b78-fc98bc3f5e72";
-        private const string qnamakerSubscriptionKey = "4398fe15638b42ee8af4aebbc8abddbb";
+        private const string knowledgebaseId = @"";
+        private const string qnamakerSubscriptionKey = "";
         public async Task<QNAResponse> GetAnswerAsync(string question)
         {
             string responseString = string.Empty;
